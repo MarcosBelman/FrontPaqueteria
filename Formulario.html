@@ -1,6 +1,13 @@
+  
+  
   <!DOCTYPE html>
   <html lang="es">
   <head>
+
+    <link href = "assets/datatables/datatables.min.js">
+    <link href = "assets/datatables/datatables.min.css" rel="stylesheet">
+    
+
   <meta charset="utf-8" />
   <title>Registro - iDESWEB</title>
   <style>
@@ -52,44 +59,34 @@
   </style>
   </head>
   <body>
-  <header>
-  <h1>Administración paquetería</h1>
+      <header>
+        <h1>Administración paquetería</h1>
 
-  <h2>REGISTRO DE UN PAQUETE</h2>
-  </header>
+        <h2>REGISTRO DE UN PAQUETE</h2>
+      </header>
 
-  <form action="" method="post">
-  <fieldset>
-  <legend>DATOS DEL PAQUETE</legend>
-  <p>
-  <label for="codRastreo">Código de rastreo</label>
-  <input type="text" name="codRastreo" id="codRastreo" />
+      <form action="" method="post">
+      <fieldset>
+      <legend>DATOS DEL PAQUETE</legend>
+      <p>
 
-  <label for="idPaquete">ID del paquete</label>
-  <input type="text" name="idPaquete" id="idPaquete" />
+      <div style="text-align:center;">
+      <table id="estados-table"> </table>
+      </div>
 
-  <label for="numPieza">Número de piezas</label>
-  <input type="text" name="numPieza" id="numPieza" />
+      <p class="centrado">
+      <button type="submit"  id="btnMostrar">MOSTRAR</button>
+      </p>
 
-  <label for="fechaHora">Fecha y Hora</label>
-  <input type="text" name="fechaHora" id="fechaHora" />
+      <button type="button" id="ejemplo">ejemplo</button>
 
-  <label for="areaServicio">Área del servicio</label>
-  <input type="text" name="areaServicio" id="areaServicio" />
-  </p>
+      </form>
 
-  <label for="estadoActual">Estado actual</label>
-  <input type="text" name="estadoActual" id="estadoActual" />
-  </p>
+    <script src = "assets/datatables/jQuery-3.6.0/jquery-3.6.0.min.js"> </script>
+    <script src = "assets/datatables/datatables.min.js"> </script>
+    <script src = "assets/scripts/conexion.js"> </script>
+    <script src = "assets/scripts/Estados.js"> </script>
 
-  <div style="text-align:center;">
-  <table id="estados-table"> </table>
-  </div>
-
-  <p class="centrado">
-  <input type="submit" value="Crear Paquete" id="boton-crear" />
-  </p>
-
-  </form>
+  
   </body>
   </html>
