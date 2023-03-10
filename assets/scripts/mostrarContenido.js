@@ -1,6 +1,9 @@
 
 var txtCodRastreo = document.querySelector('#codRastreo');
-
+var txtIdPaquete = document.querySelector('#idPaquete');
+var txtNumPiezas = document.querySelector('#numPieza');
+var txtAreaServicio = document.querySelector('#areaServicio');
+var txtEstadoActual = document.querySelector('#estadoActual');
 
 btnMostrar = document.querySelector('#btnMostrar');
 //-----------------------------------------------------------------------------------------//
@@ -13,16 +16,26 @@ btnMostrar.addEventListener('click', () =>{
 
 async function guardarPaquete(){
     
-    var codRastreo = document.getElementById('txtCodRastreo');
+    var codRastreo = parseInt(txtCodRastreo.value);
+    var idPaquete = txtIdPaquete.value;
+    var numPiezas = parseInt(txtNumPiezas.value);
+    var areaServicio = txtAreaServicio.value;
+    var estadoActual = txtEstadoActual.value;
 
-    console.log(codRastreo);
-
-    const res = await fetch(URL, {
+    const res = await fetch(URL2, {
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type' : 'application/json',
         },
-        body : JSON.values({})
+        body : JSON.stringify({
+            codRastreo: codRastreo,
+            idPaquete: idPaquete,
+            numPieza: numPiezas,
+            areaServicio: areaServicio,
+            estadoActual: estadoActual,
+        }),
+    }).catch(error => {error.log(error)});
 
-    });
+    //const data = await res.json();
+    //console.log({data});
 }
