@@ -1,4 +1,3 @@
-
 var txtCodRastreo = document.querySelector('#codRastreo');
 var txtIdPaquete = document.querySelector('#idPaquete');
 var txtNumPiezas = document.querySelector('#numPieza');
