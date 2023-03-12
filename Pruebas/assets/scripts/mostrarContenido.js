@@ -1,7 +1,3 @@
-const instance = axios.create({
-    baseURL: 'https://localhost:7110/paqueteria/Paquete'
-});
-
 var txtCodRastreo = document.querySelector('#codRastreo');
 var txtIdPaquete = document.querySelector('#idPaquete');
 var txtNumPiezas = document.querySelector('#numPieza');
@@ -9,12 +5,14 @@ var txtAreaServicio = document.querySelector('#areaServicio');
 var txtEstadoActual = document.querySelector('#estadoActual');
 
 btnMostrar = document.querySelector('#btnMostrar');
+btnEliminar = document.querySelector('#btnEliminar');
+
 //-----------------------------------------------------------------------------------------//
 //Metodo Post
 //-----------------------------------------------------------------------------------------//
 
 btnMostrar.addEventListener('click', () =>{
-        guardarPaquete();
+    guardarPaquete();
 });
 
 async function guardarPaquete(){
@@ -25,7 +23,21 @@ async function guardarPaquete(){
     var areaServicio = txtAreaServicio.value;
     var estadoActual = txtEstadoActual.value;
 
-    const res = await fetch(URL2, {
+    const {data, status} = await api.post('/Paquete', {
+        codRastreo: codRastreo,
+        idPaquete: idPaquete,
+        numPieza: numPiezas,
+        areaServicio: areaServicio,
+        estadoActual: estadoActual,
+    });
+
+    if(status !== 200){
+        console.log('Error al guardar el registro');
+    }else{
+        console.log('Registro guardado con éxito');
+    }
+
+    /* const res = await fetch(URL2, {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
@@ -37,8 +49,49 @@ async function guardarPaquete(){
             areaServicio: areaServicio,
             estadoActual: estadoActual,
         }),
-    }).catch(error => {error.log(error)});
+    }).catch(error => {error.log(error)}); */
+}
 
-    //const data = await res.json();
-    //console.log({data});
+//-----------------------------------------------------------------------------------------//
+//Metodo Delete
+//-----------------------------------------------------------------------------------------//
+
+btnEliminar.addEventListener('click', () =>{
+    EliminarPaquete();
+});
+
+async function EliminarPaquete(){
+    
+    var codRastreo = parseInt(txtCodRastreo.value);
+
+    const {data, status} = await api.delete('/Paquete/'+codRastreo);/* , {
+        //codRastreo: codRastreo,
+    }); */
+
+    if(status !== 200){
+        console.log('Error al eliminar el registro');
+    }else{
+        console.log('Registro eliminado con éxito');
+    }
+
+    /* const res = await fetch(URL2, {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json',
+        },
+        body : JSON.stringify({
+            codRastreo: codRastreo,
+            idPaquete: idPaquete,
+            numPieza: numPiezas,
+            areaServicio: areaServicio,
+            estadoActual: estadoActual,
+        }),
+    }).catch(error => {error.log(error)}); */
+
+//-----------------------------------------------------------------------------------------//
+//Metodo Post
+//-----------------------------------------------------------------------------------------//
+
+
+    
 }
