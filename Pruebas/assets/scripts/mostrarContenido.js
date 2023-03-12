@@ -1,3 +1,7 @@
+const instance = axios.create({
+    baseURL: 'https://localhost:7110/paqueteria/Paquete'
+});
+
 var txtCodRastreo = document.querySelector('#codRastreo');
 var txtIdPaquete = document.querySelector('#idPaquete');
 var txtNumPiezas = document.querySelector('#numPieza');
