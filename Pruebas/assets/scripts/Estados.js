@@ -1,31 +1,39 @@
 //-----------------------------------------------------------------------------------------//
 //CREACION DE LAS CAJAS DE TEXTO
+var txtCodRastreo = document.querySelector('#codRastreo');
+
 
 //-----------------------------------------------------------------------------------------//
 //Metodo Get
 //-----------------------------------------------------------------------------------------//
-let lblError = document.querySelector('#error');
-let btnEjemplo = document.querySelector('#ejemplo');
+let btnEstados = document.querySelector('#btnEstados');
 
-btnEjemplo.addEventListener('click', () =>{
+
+btnEstados.addEventListener('click', () =>{
 
     mostrarEstados();
 
 });
 
 async function mostrarEstados(){
-    const res = await fetch(URL);
-    const data = await res.json();
 
-    if(res.status !== 200){
+    var codRastreo = parseInt(txtCodRastreo.value);
+    //console.log('Entra al método mostrar');
+    const {data, status} = await api.get('/estadosPaquete/historialEstados?page=1&codRastreo='+codRastreo, {
+        
+    });
+
+    if(status !== 200){
         console.log('Detecta el error');
         lblError.innerHTML = "Hubo un error:" + res.status + data.message;     
-        console.log('holaaaa'+res.status + ' ' + data.message);
+        console.log(res.status + ' ' + data.message);
     }else{
+
+        console.log(data);
 
         let dataSetEstados = [];
 
-        data.forEach(element => {
+        data.resultados.forEach(element => {
             dataSetEstados.push(Object.values(element));
             console.log(element);
         });
@@ -47,5 +55,4 @@ async function mostrarEstados(){
         });
 
     }
-
 }
