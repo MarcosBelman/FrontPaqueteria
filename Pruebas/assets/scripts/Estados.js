@@ -18,15 +18,15 @@ btnEstados.addEventListener('click', () =>{
 async function mostrarEstados(){
 
     var codRastreo = parseInt(txtCodRastreo.value);
-    console.log('Entra al método mostrar');
-    const {data, status} = await api.get('/estadosPaquete/historialEstados?page=2&codRastreo='+codRastreo, {
+    //console.log('Entra al método mostrar');
+    const {data, status} = await api.get('/estadosPaquete/historialEstados?page=1&codRastreo='+codRastreo, {
         
     });
 
     if(status !== 200){
         console.log('Detecta el error');
         lblError.innerHTML = "Hubo un error:" + res.status + data.message;     
-        console.log('holaaaa'+res.status + ' ' + data.message);
+        console.log(res.status + ' ' + data.message);
     }else{
 
         console.log(data);

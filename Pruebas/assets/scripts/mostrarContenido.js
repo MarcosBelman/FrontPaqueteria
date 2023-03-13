@@ -7,6 +7,7 @@ var txtEstadoActual = document.querySelector('#estadoActual');
 btnMostrar = document.querySelector('#btnMostrar');
 btnEliminar = document.querySelector('#btnEliminar');
 btnModificar = document.querySelector('#btnModificar');
+
 //-----------------------------------------------------------------------------------------//
 //Metodo Post
 //-----------------------------------------------------------------------------------------//
